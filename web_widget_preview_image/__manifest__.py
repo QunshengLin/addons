@@ -2,7 +2,7 @@
 
 {
     'name': 'Web Widget Image Preview',
-    'version': '19.0.1.0.0',   
+    'version': '19.0.2.0.0',   
     'summary': 'Enhance ImageField with preview/zoom/rotate/download',
     'description': """
         This module extends Odoo's native ImageField with powerful preview features:
@@ -21,7 +21,7 @@
             'web_widget_preview_image/static/src/js/web_image_preview_widget.js',
         }
     },
-    'price': 19.99,
+    'price': 9.99,
     'currency': 'EUR',
     'images': ['static/description/banner.png'],
     'images': [                     

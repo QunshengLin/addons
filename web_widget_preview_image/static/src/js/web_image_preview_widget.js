@@ -222,8 +222,8 @@ function createButton({ className, innerHTML, style, onClick }) {
     Object.assign(button.style, {
         position: "fixed",
         padding: "8px 12px",
-        background: "rgba(0,0,0,0.5)",
-        border: "1px solid #fff",
+        background: "none",
+        border: "none",
         borderRadius: "4px",
         color: "#fff",
         fontSize: "16px",

@@ -1,6 +1,6 @@
 {
     "name": "China ICP Filing Number",
-    "version": "19.0.1.2",
+    "version": "19.0.1.3",
     "category": "Customizations/Studio",
     "summary": "Display the ICP number on the login page",
     "website": "https://apps.odoo.com/apps/modules/browse?series=19.0&search=cn_icp",

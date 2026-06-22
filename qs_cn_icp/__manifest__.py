@@ -1,6 +1,6 @@
 {
     "name": "China ICP Filing Number",
-    "version": "19.0.1.1",
+    "version": "19.0.1.2",
     "category": "Customizations/Studio",
     "summary": "Display the ICP number on the login page",
     "website": "https://apps.odoo.com/apps/modules/browse?series=19.0&search=cn_icp",
@@ -21,5 +21,5 @@ Tips:
     "price": 0.00,
     "currency": "EUR",
     "post_init_hook": "post_init_hook",
-    "images": ["static/description/icon.png"],
+    "images": ["static/description/banner.gif","static/description/icon.png",],
 }

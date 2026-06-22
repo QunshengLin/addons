@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="web_widget_preview_image.PhotoImageField" owl="1">
+        <div class="d-inline-block position-relative opacity-trigger-hover">
+            <!-- 操作按钮区域 -->
+            <div t-if="!props.readonly and fieldType !== 'many2one'" class="o_image_uploader_container position-absolute d-flex justify-content-between w-100 bottom-0 opacity-0 opacity-100-hover" t-att-class="isMobile ? 'o_mobile_controls' : ''" aria-atomic="true" t-att-style="sizeStyle">
+                <div class="d-flex">
+                    <!-- 上传按钮 -->
+                    <FileUploader acceptedFileExtensions="props.acceptedFileExtensions" t-key="props.record.resId" onUploaded.bind="onFileUploaded">
+                        <t t-set-slot="toggler">
+                            <button class="o_select_file_button btn btn-light border-0 rounded-circle m-1 p-1" data-tooltip="Edit" aria-label="Edit">
+                                <i class="fa fa-pencil fa-fw" title="编辑"/>
+                            </button>
+                        </t>
+                    </FileUploader>
+                    <!-- 预览按钮 -->
+                    <!-- <button t-if="props.record.data[props.name] and state.isValid" class="o_photoswipe_preview_button btn btn-light border-0 rounded-circle m-1 p-1" data-tooltip="Preview" aria-label="Preview" t-on-click="openCustomImagePreview">
+                        <i class="fa fa-search-plus fa-fw"/>
+                    </button> -->
+                </div>
+                <!-- 图片编辑按钮 -->
+                <button t-if="props.record.data[props.name] and state.isValid and props.enableFabricEdit" class="o_fabric_edit_button btn btn-light border-0 rounded-circle m-1 p-1" t-on-click="openImageEditor">
+                    <i class="fa fa-paint-brush fa-fw"/>
+                </button>
+                <!-- 删除按钮 -->
+                <button t-if="props.record.data[props.name] and state.isValid" class="o_clear_file_button btn btn-light border-0 rounded-circle m-1 p-1" data-tooltip="Clear" aria-label="Clear" t-on-click="onFileRemove">
+                    <i class="fa fa-trash-o fa-fw"/>
+                </button>
+            </div>
+
+            <!-- 预览按钮（独立出来，不受只读模式影响） -->
+            <div class="position-absolute" t-att-class="isMobile ? 'o_mobile_controls' : ''" t-att-style="sizeStyle">
+                <button t-if="props.record.data[props.name] and state.isValid" class="o_photoswipe_preview_button btn btn-light border-0 rounded-circle m-1 p-1" data-tooltip="Preview" aria-label="Preview" t-on-click="openCustomImagePreview" style="bottom: 0; left: 40px; z-index: 10;">                    <!-- 调整位置确保不被遮挡 -->
+                    <i class="fa fa-search-plus fa-fw"/>
+                </button>
+            </div>
+            <!-- 图片展示区域 -->
+            <img loading="lazy" t-att-class="imgClass" t-att-alt="imgAlt" t-att-src="this.getUrl(props.previewImage or props.name)" t-att-name="props.name" t-att-height="props.height" t-att-width="props.width" t-att-style="sizeStyle" t-on-error.stop="onLoadFailed" style="cursor: default;"/>
+        </div>
+    </t>
+</templates>

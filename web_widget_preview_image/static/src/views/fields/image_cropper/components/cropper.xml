@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="web_widget_preview_image.CropperImageField" owl="1">
+        <!-- 适配移动端：Dialog 大小改为自适应，xl 仅在大屏生效，小屏用默认 -->
+        <Dialog size="isMobile ? 'md' : 'xl'" title="title">
+            <div class="row g-0 mx-1">                <!-- 减小内边距适配手机 -->
+                <div class="col-12">
+                    <!-- 编辑工具栏：优化移动端布局 -->
+                    <div class="mt-2 border p-1 rounded bg-light">                        <!-- 减小间距和内边距 -->
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-header bg-white border-bottom py-1">                                <!-- 减小内边距 -->
+                                <!-- 适配移动端：改为多行排列，必要时换行 -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                    <!-- 标题 -->
+                                    <!-- <h5 class="mb-0 fs-6">
+                                        <i class="fa fa-picture-o me-1"></i>
+                                    </h5>
+                                     -->
+                                    <!-- 横向操作按钮组：适配移动端换行 -->
+                                    <div class="d-flex flex-wrap gap-1 w-100">                                        <!-- 100%宽度 + 自动换行 + 减小间距 -->
+                                        <!-- 基础操作按钮组：移动端优先展示 -->
+                                        <div class="d-flex gap-1 flex-wrap">
+                                            <button class="btn btn-sm btn-outline-primary" t-on-click="rotateLeft">
+                                                <i class="fa fa-rotate-left"/>
+                                                <!-- 移除mr-1，精简 -->
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" t-on-click="rotateRight">
+                                                <i class="fa fa-rotate-right"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" t-on-click="flipHorizontal">
+                                                <i class="fa fa-arrows-h"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" t-on-click="flipVertical">
+                                                <i class="fa fa-arrows-v"/>
+                                            </button>
+
+                                            <!-- 裁剪核心操作 -->
+                                            <button class="btn btn-sm btn-outline-success" t-on-click="toggleCropMode" t-att-class="state.isCropping ? 'btn-success' : 'btn-outline-success'">
+                                                <i class="fa fa-crop"/>
+                                                <span t-if="!isMobile">                                                    <!-- 移动端隐藏文字，只保留图标 -->
+                                                    <t t-esc="state.isCropping ? 'Exit Crop' : ''"/>
+                                                </span>
+                                                <i class="fa fa-scissors ms-1"/>
+                                            </button>
+
+                                            <!-- 仅裁剪模式显示 -->
+                                            <button class="btn btn-sm btn-outline-success" t-if="state.isCropping" t-on-click="applyCrop">
+                                                <i class="fa fa-check" title="check"/>
+                                            </button>
+
+                                            <!-- 辅助操作 -->
+                                            <button class="btn btn-sm btn-outline-secondary" t-on-click="resetEditor">
+                                                <i class="fa fa-undo"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary" t-on-click="centerCropBox" t-if="state.isCropping">
+                                                <i class="fa fa-dot-circle-o"/>
+                                            </button>
+                                        </div>
+
+                                        <!-- 裁剪比例选择：移动端独立一行 -->
+                                        <div class="d-flex align-items-center gap-1 w-100 mt-1" t-if="state.isCropping">
+                                            <label class="form-label-sm mb-0 text-muted">比例：</label>
+                                            <select class="form-select form-select-sm flex-grow-1" t-on-change="changeCropRatio">
+                                                <option value="free">Liberty</option>
+                                                <option value="1:1">1:1</option>
+                                                <option value="4:3">4:3</option>
+                                                <option value="16:9">16:9</option>
+                                                <option value="3:2">3:2</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- 保存/关闭按钮：移动端固定在右侧/底部 -->
+                                        <div class="d-flex gap-1 ms-auto">                                            <!-- 右对齐 -->
+                                            <button class="btn btn-sm btn-primary" t-on-click="saveImage">
+                                                <i class="fa fa-save me-1"/>
+                                                <span t-if="!isMobile"></span>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" t-on-click="props.close">
+                                                <i class="fa fa-times me-1"/>
+                                                <span t-if="!isMobile"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <!-- 加载/错误提示：适配移动端 -->
+                            <div t-if="state.isLoading" class="mt-2 text-primary fs-sm">
+                                <i class="fa fa-spinner fa-spin me-1"></i>加载中...
+                            </div>
+                            <div t-if="state.hasError" class="mt-2 text-danger fs-sm">
+                                <i class="fa fa-exclamation-triangle me-1"></i>
+                                <t t-esc="state.errorMessage"/>
+                            </div>
+
+                            <!-- 图片容器：适配移动端 -->
+                            <div t-ref="editorContainer" class="w-100 overflow-auto">                                <!-- 100%宽度 + 滚动 -->
+                                <img t-ref="editorImage" class="w-100 h-auto"/>
+                                <!-- 图片自适应宽度 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Dialog>
+    </t>
+</templates>

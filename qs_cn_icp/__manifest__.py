@@ -21,5 +21,5 @@ Tips:
     "price": 0.00,
     "currency": "EUR",
     "post_init_hook": "post_init_hook",
-    "images": ["static/description/banner.gif"],
+    "images": ["static/description/icon.png"],
 }

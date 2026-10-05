@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QS PyMuPDF PDF Report Enhancement Module</title>
+</head>
+<body class="bg-light">
+    <div class="d-flex justify-content-center mt-2">
+        <img src="./pc.gif"
+             class="w-100" alt=""/>
+    </div>
+        <div class="d-flex justify-content-center mt-2">
+        <img src="./app.gif"
+             class="w-100" alt=""/>
+    </div>
+    <div class="container py-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0 d-flex align-items-center">
+                    <span class="material-symbols-outlined me-2">description</span>
+                    QS PyMuPDF PDF Report Enhancement Module
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info d-flex align-items-center">
+                    <span class="material-symbols-outlined me-2">terminal</span>
+                    <div>
+                        Install Python dependency:
+<pre class="mb-0">sudo /usr/bin/python3 -m pip install PyMuPDF==1.26.7 --break-system-packages</pre>
+                    </div>
+                </div>
+                <p class="lead">
+                    This module extends Odoo 20 native reporting model <code>ir.actions.report</code> based on PyMuPDF.
+                    It supports PDF generation, high-definition PDF-to-PNG conversion, social OG sharing preview and report action selection popup.
+                </p>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">featured_play_list</span>Features</h3>
+                <p>Add 4 output modes for QWeb PDF reports:</p>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <span class="material-symbols-outlined text-primary me-2">print</span>Print
+                                </h5>
+                                <p class="card-text small">Generate PDF on the backend and trigger browser print dialog</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <span class="material-symbols-outlined text-success me-2">download</span>Download
+                                </h5>
+                                <p class="card-text small">Use Odoo native PDF download logic</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <span class="material-symbols-outlined text-secondary me-2">open_in_new</span>Open
+                                </h5>
+                                <p class="card-text small">Preview PDF in a new browser tab</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <span class="material-symbols-outlined text-warning me-2">image</span>OG Render
+                                </h5>
+                                <p class="card-text small">Convert PDF pages to high-resolution PNG images and preview in popup. The page embeds OG meta tags for social sharing cards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">stars</span>Highlights</h3>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item d-flex align-items-start">
+                        <span class="material-symbols-outlined text-success me-2">check_circle</span>
+                        Directly convert reports into images. On mobile devices, long press to share via browser to other apps easily, no need to save images locally to album first.
+                    </li>
+                    <li class="list-group-item d-flex align-items-start">
+                        <span class="material-symbols-outlined text-success me-2">check_circle</span>
+                        Configure <strong>default printing option</strong> directly on the report form.
+                    </li>
+                    <li class="list-group-item d-flex align-items-start">
+                        <span class="material-symbols-outlined text-success me-2">check_circle</span>
+                        Embed base64 images in the page with OG meta tags to generate preview cards for social platforms.
+                    </li>
+                    <li class="list-group-item d-flex align-items-start">
+                        <span class="material-symbols-outlined text-success me-2">check_circle</span>
+                        Safety protection: 60-second render timeout and maximum 50MB file limit to prevent server freeze.
+                    </li>
+                    <li class="list-group-item d-flex align-items-start">
+                        <span class="material-symbols-outlined text-success me-2">check_circle</span>
+                        OWL3 frontend popup, fully compatible with Odoo 20 new report handler architecture.
+                    </li>
+                </ul>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">code</span>Backend Python (ir.actions.report Extension)</h3>
+                <ul>
+                    <li>New field <code>default_print_option</code> to preset report behavior: <code>print / download / open / og_render</code></li>
+                    <li><code>_safe_render_pdf</code>: Add timeout and file size validation, unified exception capture and log output.</li>
+                    <li><code>_pdf_to_png_optimized</code>: Convert PDF binary stream to images directly <strong>without temporary disk files</strong>. Default 2x scaling and 150 DPI, return base64 strings for all pages. Automatically release documents to avoid handle leakage.</li>
+                    <li>RPC method <code>fitz_pdf_image()</code>: Frontend ORM call entry with parameter validation, access permission check and exception handling.</li>
+                    <li>Override <code>report_action</code> and <code>_get_readable_fields</code> to pass custom settings to frontend.</li>
+                </ul>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">web</span>Frontend OWL3 JS (Odoo20 Web)</h3>
+                <ul>
+                    <li>Intercept <code>qweb-pdf</code> report actions; bypass non-PDF reports without breaking original logic.</li>
+                    <li><code>ReportDialogWindow</code> OWL3 popup component, supports ESC key to close.</li>
+                    <li>Skip popup and run action directly if default printing option is set on report.</li>
+                    <li>OG Render preview uses iframe popup with adaptive multi-page image display. Close button cleans up DOM nodes to prevent memory leaks.</li>
+                    <li>Reuse single iframe instance for printing to reduce DOM resource consumption.</li>
+                    <li>Detect PDF engine status via new endpoint <code>/report/get_pdf_engine_state</code>, auto fallback to HTML report preview if PDF engine fails.</li>
+                </ul>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">library_books</span>Dependencies</h3>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item"><span class="material-symbols-outlined me-2">package</span>Python package: <code>pymupdf >=1.24</code> (auto compatible with old fitz import syntax)</li>
+                    <li class="list-group-item"><span class="material-symbols-outlined me-2">info</span>Odoo Version: <strong>Odoo 20 (OWL3)</strong></li>
+                    <li class="list-group-item"><span class="material-symbols-outlined me-2">extension</span>Odoo required modules: <code>web</code>, <code>base</code></li>
+                </ul>
+<pre>pip install pymupdf</pre>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">handyman</span>Usage</h3>
+                <ol>
+                    <li><strong>Configure default report behavior</strong>
+                        <p>Go to Settings > Technical > Reports, open QWeb PDF report and set the field <code>Default printing option</code>.<br>
+                        Leave empty to show selection popup every time users click the report.</p>
+                    </li>
+                    <li><strong>OG Render PDF to image preview</strong>
+                        <p>Click print on document → select OG Render.<br>
+                        Backend renders PDF and converts it to PNG. Popup displays all pages with OG sharing meta information.</p>
+                    </li>
+                    <li><strong>Print function</strong>
+                        <p>Select Print. PDF loads inside hidden iframe then triggers browser print dialog.</p>
+                    </li>
+                    <li><strong>Engine fallback mechanism</strong>
+                        <p>If PDF rendering engine is unavailable, system automatically switches to HTML report preview.</p>
+                    </li>
+                </ol>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">security</span>Security & Limitations</h3>
+                <ul>
+                    <li>Max PDF file size: 50MB</li>
+                    <li>PDF rendering timeout limit: 60 seconds</li>
+                    <li>Base64 images increase data transmission volume, suitable for short documents such as invoices and contracts</li>
+                    <li>Image conversion runs on server side, sufficient server memory is required</li>
+                    <li>Read permission validation is enforced when accessing reports</li>
+                </ul>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">folder</span>Module File Structure</h3>
+<pre>qs_pip_pymupdf/
+├── __init__.py
+├── __manifest__.py
+├── models/
+│   └── ir_actions_report.py
+├── static/
+│   └── src/js/
+│       ├── report_handler.js
+│       └── report_dialog.js
+├── views/
+│   └── report_assets.xml
+└── README.rst</pre>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">history</span>Changelog</h3>
+                <div class="alert alert-secondary">
+                    <strong>V20.0.1.0.0</strong>
+                    <ul class="mb-0">
+                        <li>Adapted for Odoo 20 with OWL3 frontend components</li>
+                        <li>Support four report actions: Print / Download / Open / OG Render</li>
+                        <li>High-definition PDF to PNG conversion powered by PyMuPDF</li>
+                        <li>Generate OG and social sharing meta tags</li>
+                        <li>Add PDF render timeout and file size restrictions</li>
+                        <li>Auto fallback to HTML preview when PDF engine fails</li>
+                        <li>Single iframe optimization to reduce memory footprint</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title"><span class="material-symbols-outlined me-2">help</span>FAQ</h3>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Q: No image preview after selecting OG Render?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                A: Confirm pymupdf installed successfully, check Odoo server logs for conversion errors.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Q: Preview image looks blurry?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                A: Adjust scaling matrix <code>Matrix(2.0,2.0)</code> and DPI in <code>_pdf_to_png_optimized</code>. Larger values create bigger base64 payload.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Q: Social platforms cannot display OG preview image?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                A: Most social platforms do not support base64 images for OG cards. For production sharing, upload images to publicly accessible static URLs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="qs_pip_pymupdf.report_pdf_options">
+        <Dialog size="'sm'" title="title">
+            <div style="text-align:center;">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-info" t-on-click="() => this.executePdfAction('print')">
+                        <i class="oi me-2" data-icon="print"/>
+                    </button>
+                    <button class="btn btn-info" t-on-click="() => this.executePdfAction('download')">
+                        <i class="oi me-2" data-icon="download"/>
+                    </button>
+                    <button class="btn btn-info" t-on-click="() => this.executePdfAction('open')">
+                        <i class="oi me-2" data-icon="description"/>
+                    </button>
+                    <button class="btn btn-info" t-on-click="() => this.executePdfAction('og_render')">
+                        <i class="oi me-2" data-icon="image"/>
+                    </button>
+                </div>
+            </div>
+        </Dialog>
+    </t>
+</templates>

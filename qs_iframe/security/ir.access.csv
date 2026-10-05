@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_qs_iframe,Admin,qs.iframe,base.group_user,crud,
+access_qs_mind,Admin,qs.mind.map,base.group_user,crud,

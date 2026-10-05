@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Excalidraw Bridge</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #app { width: 100%; height: 100%; overflow: hidden; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// UMD库与字体资源全部本地化（jsDelivr下载），不再依赖unpkg CDN
+window.EXCALIDRAW_ASSET_PATH = "/qs_iframe/static/excalidraw/lib/";
+</script>
+<script src="/qs_iframe/static/excalidraw/lib/react.production.min.js"></script>
+<script src="/qs_iframe/static/excalidraw/lib/react-dom.production.min.js"></script>
+<script src="/qs_iframe/static/excalidraw/lib/excalidraw.production.min.js"></script>
+<script>
+// 节流：画布高频变化时每500ms向Odoo父页面发一次，最后一次必发（trailing）
+let emitTimer = null;
+let pendingEmit = null;
+function emitChange(payload) {
+    pendingEmit = payload;
+    if (emitTimer) return;
+    emitTimer = setTimeout(() => {
+        emitTimer = null;
+        if (pendingEmit) {
+            window.parent.postMessage({ type: "EXCALIDRAW_UPDATE", payload: pendingEmit }, "*");
+            pendingEmit = null;
+        }
+    }, 500);
+}
+
+let excalidrawAPI = null;
+
+function App() {
+    return React.createElement(ExcalidrawLib.Excalidraw, {
+        langCode: (navigator.language || "en").toLowerCase().startsWith("zh") ? "zh-CN" : "en",
+        excalidrawAPI: (api) => {
+            excalidrawAPI = api;
+            window.__excalidrawApi = api;
+            // 握手：通知Odoo端可以下发画布数据了
+            window.parent.postMessage({ type: "EXCALIDRAW_READY" }, "*");
+        },
+        onChange: (elements, appState, files) => {
+            // files为图片等二进制资源（base64），一并上送否则刷新后图片丢失
+            emitChange({ elements: elements, files: files });
+        },
+    });
+}
+
+// 接收Odoo父页面消息：首次打开/手动刷新时下发画布数据
+window.addEventListener("message", (event) => {
+    if (event.source !== window.parent) return;
+    const msg = event.data || {};
+    if (msg.type === "EXCALIDRAW_LOAD_SCENE" && excalidrawAPI) {
+        const payload = msg.payload || {};
+        // 外部数据需先restore补全内部字段(seed/version等)，否则渲染异常
+        const elements = ExcalidrawLib.restoreElements(payload.elements || [], null);
+        excalidrawAPI.updateScene({ elements, commitToHistory: true });
+        if (payload.files && Object.keys(payload.files).length) {
+            excalidrawAPI.addFiles(Object.values(payload.files));
+        }
+        // 场景元素不在初始视野内时自动滚动定位
+        // updateScene是异步提交，需延迟一拍再取场景元素，否则取到空数组
+        if (elements.length) {
+            setTimeout(() => {
+                try {
+                    excalidrawAPI.scrollToContent(excalidrawAPI.getSceneElements());
+                } catch (e) { /* 忽略 */ }
+            }, 100);
+        }
+    }
+});
+
+ReactDOM.createRoot(document.getElementById("app")).render(React.createElement(App));
+</script>
+</body>
+</html>

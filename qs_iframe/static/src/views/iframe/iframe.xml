@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="qs_iframe.IframeComponent">
+        <div class="o_action_manager h-100 w-100 d-flex flex-column">
+            <div class="o_form_view o_sale_order_form_view o_sale_order o_view_controller o_action h-100 w-100 d-flex flex-column">
+                <div class="o_form_view_container flex-grow-1 d-flex flex-column" style="min-height: 0;">
+                    <div class="o_control_panel d-flex flex-column gap-3 px-3 pt-2" data-command-category="actions">
+                        <div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-2 gap-lg-3 flex-grow-1">
+                            <div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100">
+                                <div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none text-nowrap pe-1">
+                                    <!-- iframe button -->
+                                    <Dropdown>
+                                        <button type="button" data-bounce-button="" class="btn btn-outline-primary o_form_button_create" data-hotkey="c">
+                                            <i class="o_button_icon oi" data-icon="article"/>
+                                        </button>
+                                        <t t-set-slot="content">
+                                            <t t-foreach="this.urlOptions()" t-as="option" t-key="option.id">
+                                                <DropdownItem class="option.id === this.selectedId() ? 'active' : ''" onSelected="() => this.onSelectItem(option)">
+                                                    <t t-out="option.name"/>
+                                                </DropdownItem>
+                                            </t>
+                                        </t>
+                                    </Dropdown>
+                                </div>
+                                <div class="o_breadcrumb d-flex flex-row flex-md-column min-w-0">
+                                    <ol class="breadcrumb flex-nowrap text-nowrap lh-sm">
+                                        <li class="breadcrumb-item d-inline-flex min-w-0 o_back_button" data-hotkey="b">
+                                            <a class="text-truncate" t-out="this.selectedUrl()"/>
+
+                                        </li>
+                                    </ol>
+                                    <div class="d-flex gap-1 min-w-0">
+                                        <div class="o_last_breadcrumb_item active d-flex gap-2 align-items-center min-w-0 lh-sm text-truncate">
+                                            <span class="min-w-0 text-truncate">URL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="me-auto"/>
+                            </div>
+                            <!-- 中间 -->
+                            <div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto gap-1 h-lg-100">
+                                <div class="o-form-buttonbox d-print-none position-relative d-flex o_not_full">
+                                    <a class="btn oe_stat_button btn-outline-secondary flex-grow-1 flex-lg-grow-0" t-att-class="this.selectedUrl() ? '' : 'disabled'" title="Open in new window" aria-label="Open in new window" t-att-href="this.selectedUrl() || '#'" target="_blank" rel="noopener">
+                                        <i class="o_button_icon oi" data-icon="link"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 右边 -->
+                            <div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-1 gap-xl-3 order-1 order-lg-2 flex-grow-1 align-items-lg-center">
+                                <button type="button" class="btn btn-light p-1" title="Refresh" aria-label="Refresh" data-tooltip="Refresh" data-hotkey="r" t-att-disabled="!this.selectedUrl() || this.isIframeLoading()" t-on-click="() => this.onRefresh()">
+                                    <i class="o_button_icon oi" data-icon="cached"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <main class="o_content flex-grow-1 d-flex flex-column" style="min-height: 0; overflow: hidden;">
+                        <t t-if="this.isLoading()">
+                            <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted">
+                                <div class="spinner-border text-primary me-2" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <span>Loading...</span>
+                            </div>
+                        </t>
+                        <t t-elif="this.selectedUrl()">
+                            <div class="position-relative flex-grow-1 d-flex flex-column" style="min-height: 0;">
+                                <t t-if="this.isIframeLoading()">
+                                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-white bg-opacity-75" style="z-index: 10;">
+                                        <div class="spinner-border text-primary me-2" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        <span class="text-muted">
+                                            <t t-out="this.selectedName() || this.selectedUrl()"/>
+                                            <i class="oi oi-hourglass ms-1" role="img" aria-label="Loading"/>
+                                        </span>
+                                    </div>
+                                </t>
+                                <iframe t-ref="this.iframeRef" class="flex-grow-1 w-100" style="border: 0; min-height: 0; flex: 1 1 auto;" title="Iframe Panel" frameborder="0" allowfullscreen="true" t-on-load="() => this.onIframeLoad()" />
+                            </div>
+                        </t>
+
+                        <t t-else="">
+                            <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center text-muted gap-2">
+                                <i class="oi oi-3x oi-web" role="img" aria-label="No iframe configured"/>
+                                <span>No iframe configured. Add records in the Iframe List.</span>
+                            </div>
+                        </t>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

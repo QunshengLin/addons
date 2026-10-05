@@ -1,0 +1,341 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* qs_iframe
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0+e-20260924\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-02 05:53+0000\n"
+"PO-Revision-Date: 2026-10-02 05:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: qs_iframe
+#: model:ir.module.module,description:base.module_qs_iframe
+msgid ""
+"\n"
+"Adds a configurable iframe action to the Odoo backend. Administrators maintain a\n"
+"list of named URLs (qs.iframe.list); users pick one from a dropdown and the page\n"
+"is rendered inline, with refresh and open-in-new-window controls.\n"
+msgstr ""
+"\n"
+"为 Odoo 后台添加了一个可配置的 iframe 操作。管理员维护一个命名 URL 列；用户从下拉菜单中选择一个链接，页面将以内联方式显示，并提供刷新和在新窗口中打开的控制选项。\n"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__active
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__active
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_iframe_search
+msgid "Active"
+msgstr "归档"
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_iframe_form
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_iframe_kanban
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_form
+msgid "Archived"
+msgstr "归档"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__color
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__color
+msgid "Color"
+msgstr "颜色"
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_iframe_search
+msgid "Create User"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__create_uid
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__create_date
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_iframe_kanban
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_kanban
+msgid "Delete"
+msgstr "删除"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__display_name
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__display_name
+msgid "Display Name"
+msgstr "名称"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+msgid "Drawing loading"
+msgstr "Drawing加载"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.js:0
+msgid "Drawing saved"
+msgstr "Drawing 保存"
+
+#. module: qs_iframe
+#: model:ir.module.module,summary:base.module_qs_iframe
+msgid "Embed external web pages inside a backend iframe view"
+msgstr "在后端 iframe 视图中嵌入外部网页"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.js:0
+msgid "Excalidraw"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__excalidraw_data
+msgid "Excalidraw Data"
+msgstr "画板数据"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+msgid "Excalidraw Panel"
+msgstr "Excalidraw面板"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.js:0
+msgid ""
+"Excalidraw bridge failed to load in time, please check network access to "
+"unpkg.com"
+msgstr "Excalidraw 桥接加载超时，请检查对的网络访问。"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.js:0
+msgid "Failed to load drawing"
+msgstr "加载图纸失败"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.js:0
+msgid "Failed to save drawing"
+msgstr "保存图纸失败"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.js:0
+msgid "Failed to save mind map"
+msgstr "保存思维导图"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.js:0
+msgid "HTML Notification:"
+msgstr "HTML提示"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__id
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__id
+msgid "ID"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.actions.act_window,name:qs_iframe.act_window_qs_iframe
+#: model:ir.actions.client,name:qs_iframe.action_iframe
+#: model:ir.module.module,shortdesc:base.module_qs_iframe
+#: model:ir.ui.menu,name:qs_iframe.menu_root
+msgid "Iframe"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.actions.client,name:qs_iframe.action_iframe_excalidraw
+msgid "Iframe Excalidraw"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.model,name:qs_iframe.model_qs_iframe
+msgid "Iframe List"
+msgstr "列表"
+
+#. module: qs_iframe
+#: model:ir.actions.client,name:qs_iframe.action_iframe_mind
+msgid "Iframe Mind"
+msgstr "思维导图"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Iframe Panel"
+msgstr "Iframe面板"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__lang
+msgid "Language"
+msgstr "语言"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__write_uid
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__write_date
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Loading"
+msgstr "加载"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Loading..."
+msgstr "加载..."
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__local_config
+msgid "Local Config"
+msgstr "缓存配置"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__mind_config
+msgid "Mind Config"
+msgstr "思维导图配置"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__mind_data
+msgid "Mind Data"
+msgstr "思维导图数据"
+
+#. module: qs_iframe
+#: model:ir.actions.act_window,name:qs_iframe.act_window_qs_mind_map
+#: model:ir.model,name:qs_iframe.model_qs_mind_map
+#: model:ir.ui.menu,name:qs_iframe.menu_2
+msgid "Mind Map"
+msgstr "思维导图"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Mind map loading"
+msgstr "思维导图加载"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.js:0
+msgid "Mind map saved successfully"
+msgstr "思维导图保存成功"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__name
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__name
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_search
+msgid "Name"
+msgstr "名称"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+msgid "No iframe configured"
+msgstr "未配置 iframe"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+msgid "No iframe configured. Add records in the Iframe List."
+msgstr "未配置 iframe。请在 iframe 列表中添加记录。"
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_form
+msgid "Open Excalidraw"
+msgstr "打开 Excalidraw"
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_form
+msgid "Open Mind"
+msgstr "打开思维导图"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+msgid "Open in new window"
+msgstr "在新窗口中打开"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Refresh"
+msgstr "刷新"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+msgid "Reload scene"
+msgstr "重新加载"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Save"
+msgstr "保存"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/excalidraw/excalidraw.xml:0
+msgid "Save drawing"
+msgstr "保存 画画"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe_mind/iframe_mind.xml:0
+msgid "Save mind map"
+msgstr "保存思维导图"
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_iframe_search
+msgid "Search"
+msgstr "查询"
+
+#. module: qs_iframe
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_search
+msgid "Search Mind Map"
+msgstr "查询思维导图"
+
+#. module: qs_iframe
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__sequence
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_mind_map__sequence
+msgid "Sequence"
+msgstr "顺序"
+
+#. module: qs_iframe
+#: model:ir.ui.menu,name:qs_iframe.menu_1
+#: model_terms:ir.ui.view,arch_db:qs_iframe.view_qs_mind_map_form
+msgid "Setting"
+msgstr "配置"
+
+#. module: qs_iframe
+#. odoo-javascript
+#: code:addons/qs_iframe/static/src/views/iframe/iframe.xml:0
+#: model:ir.model.fields,field_description:qs_iframe.field_qs_iframe__url
+msgid "URL"
+msgstr "网址"

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <link rel="icon" href="dist/logo.ico">
+    <title>思绪思维导图</title>
+    <script>
+        // 自定义静态资源的路径
+        window.externalPublicPath = './dist/'
+        // 开启接管模式，使用外部传入数据
+        window.takeOverApp = true
+    </script>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>
+        try {
+            LA.init({
+                id: 'KRO0WxK8GT66tYCQ',
+                ck: 'KRO0WxK8GT66tYCQ',
+                autoTrack: false
+            })
+        } catch (error) {
+            console.log("HTML:", error)
+        }
+    </script>
+    <link href="dist/css/chunk-vendors.css?720fe4d863ea0fdcc0fb" rel="stylesheet">
+    <link href="dist/css/app.css?720fe4d863ea0fdcc0fb" rel="stylesheet">
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but thoughts doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong>
+</noscript>
+<div id="app"></div>
+
+<script>
+    // 缓存从Odoo父窗口下发的思维导图数据
+    let backendMindData = null;
+    let backendLang = null;
+    let backendLocalConfig = null;
+    let backendMindMapConfig = null;
+    // 监听父Owl组件下发消息
+    window.addEventListener('message', (e) => {
+        window.parent.postMessage({
+            action: "html_notification",
+            payload: "HTML addEventListener"
+        }, "*");
+        if (e.data?.action === "OWL_HTML") {
+            backendMindData = e.data.payload.mindMapData;
+            backendLang = e.data.payload.lang;
+            backendLocalConfig = e.data.payload.localConfig;
+            backendMindMapConfig = e.data.payload.mindMapConfig;
+        }
+    });
+
+    const getDataFromBackend = () => {
+        return new Promise((resolve) => {
+            // 轮询等待父窗口下发的数据，最多等待3秒，避免固定延时导致读到空数据
+            const startedAt = Date.now();
+            const timer = setInterval(() => {
+                if (backendMindData || Date.now() - startedAt > 3000) {
+                    clearInterval(timer);
+                    if (backendMindData) {
+                        // 使用后端数据库读取的数据
+                        resolve({
+                            mindMapData: backendMindData,
+                            mindMapConfig: backendMindMapConfig,
+                            lang: backendLang,
+                            localConfig: backendLocalConfig
+                        });
+                    } else {
+                        // 兜底默认根节点
+                        resolve({
+                            mindMapData: {
+                                root: {
+                                    data: {
+                                        text: 'err'
+                                    },
+                                    children: []
+                                },
+                                theme: {
+                                    template: 'avocado',
+                                    config: {}
+                                },
+                                layout: 'logicalStructure',
+                                config: {},
+                                view: null
+                            },
+                            mindMapConfig: {},
+                            lang: 'zh',
+                            localConfig: null
+                        })
+                    }
+                }
+            }, 100);
+        })
+    }
+
+    const setTakeOverAppMethods = data => {
+        window.takeOverAppMethods = {}
+        // 获取思维导图数据
+        window.takeOverAppMethods.getMindMapData = () => {
+            return data.mindMapData
+        }
+        // 保存思维导图节点数据 → 发送给父Owl组件
+        window.takeOverAppMethods.saveMindMapData = data => {
+            window.parent.postMessage({
+                action: "html_saveMindMapData",
+                payload: data
+            }, "*");
+        }
+        // 获取思维导图配置
+        window.takeOverAppMethods.getMindMapConfig = () => {
+            return data.mindMapConfig
+        }
+        // 保存思维导图配置
+        window.takeOverAppMethods.saveMindMapConfig = config => {
+            window.parent.postMessage({
+                action: "html_saveMindMapConfig",
+                payload: config
+            }, "*");
+        }
+        // 获取语言
+        window.takeOverAppMethods.getLanguage = () => {
+            return data.lang
+        }
+        // 保存语言
+        window.takeOverAppMethods.saveLanguage = lang => {
+            window.parent.postMessage({
+                action: "html_saveLanguage",
+                payload: lang
+            }, "*");
+        }
+        // 获取本地配置
+        window.takeOverAppMethods.getLocalConfig = () => {
+            return data.localConfig
+        }
+        // 保存本地配置
+        window.takeOverAppMethods.saveLocalConfig = config => {
+            window.parent.postMessage({
+                action: "html_saveLocalConfig",
+                payload: config
+            }, "*");
+        }
+    }
+
+    window.onload = async () => {
+        if (!window.takeOverApp) return;
+
+        // 向父窗口请求加载数据库中保存的思维导图
+        window.parent.postMessage({
+            action: "html_request_load"
+        }, "*");
+        const data = await getDataFromBackend()
+        setTakeOverAppMethods(data)
+        // 思维导图实例初始化完成事件 → 通知父窗口隐藏加载遮罩
+        window.$bus.$on('app_inited', mindMap => {
+            console.log('app_inited', mindMap)
+            window.parent.postMessage({
+                action: "html_app_ready"
+            }, "*")
+        })
+
+        window.initApp()
+
+        // 兜底：应用初始化异常时也结束父窗口加载状态
+        setTimeout(() => {
+            window.parent.postMessage({
+                action: "html_app_ready"
+            }, "*")
+        }, 10000)
+    }
+</script>
+
+<script src="dist/js/chunk-vendors.js?720fe4d863ea0fdcc0fb"></script>
+<script src="dist/js/app.js?720fe4d863ea0fdcc0fb"></script>
+</body>
+</html>

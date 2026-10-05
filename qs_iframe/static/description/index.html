@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MindMap & Excalidraw - Odoo Module</title>
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center mt-2">
+        <img src="./app.gif"
+             class="w-100" alt=""/>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <h1 class="display-5 fw-bold text-primary icon-title">
+                <span class="material-icons">psychology</span>
+                MindMap & Excalidraw
+            </h1>
+            <p class="lead text-secondary">
+                Embed web pages, mind maps and Excalidraw whiteboards in the Odoo backend, with data persisted in the Odoo database
+            </p>
+            <hr>
+
+            <!-- Overview -->
+            <h2 class="section-title icon-title">
+                <span class="material-icons">info</span>Overview
+            </h2>
+            <p>
+                This module provides powerful embedding and editing capabilities inside the Odoo backend, including custom webpage embedding, online mind map editing and Excalidraw whiteboard drawing.
+                All edited data can be fully persisted in the Odoo database for permanent storage.
+            </p>
+
+            <!-- Core Features 折叠面板 -->
+            <h2 class="section-title icon-title">
+                <span class="material-icons">featured_play_list</span>Core Features
+            </h2>
+            <div class="accordion mb-4" id="featureAccordion">
+                <!-- Feature 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <span class="material-icons">web</span> Backend Webpage Embedding
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#featureAccordion">
+                        <div class="accordion-body">
+                            Provides universal webpage embedding capability within the Odoo backend.
+                            Administrators can pre-configure and manage multiple URL lists.
+                            Users can quickly switch different embedded pages through the dropdown menu, and support one-click page refresh operation.
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span class="material-icons">account_tree</span> Online Mind Map Editor
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#featureAccordion">
+                        <div class="accordion-body">
+                            Built-in professional mind map module, supports full online mind map editing.
+                            All mind map structure data, configuration parameters and language settings are stored persistently in the Odoo database, ensuring data will not be lost after page refresh or re-opening.
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span class="material-icons">draw</span> Excalidraw Whiteboard Editor
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#featureAccordion">
+                        <div class="accordion-body">
+                            Native embedded Excalidraw canvas, supports free hand-drawing, graphic arrangement and element editing.
+                            The module adopts delayed automatic saving strategy, all canvas element changes will be automatically saved to the Odoo database, realizing real-time data persistence.
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span class="material-icons">link</span> One-Click Independent Editing & Bridge Communication
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#featureAccordion">
+                        <div class="accordion-body">
+                            Users can open dedicated mind map and whiteboard independent editing views with one click through form buttons.
+                            The frontend editing page and Odoo backend complete data interaction through a stable bridge communication mechanism, realizing seamless data reading and saving.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights -->
+            <h2 class="section-title icon-title">
+                <span class="material-icons">star</span>Highlights
+            </h2>
+            <ul class="list-group mb-4">
+                <li class="list-group-item"><span class="material-icons text-success">check_circle</span> Fully embedded in Odoo backend, no external software required</li>
+                <li class="list-group-item"><span class="material-icons text-success">check_circle</span> All editing data persisted in Odoo database, safe and controllable</li>
+                <li class="list-group-item"><span class="material-icons text-success">check_circle</span> Auto-delay save for whiteboard to avoid frequent database requests</li>
+                <li class="list-group-item"><span class="material-icons text-success">check_circle</span> Unified URL management, convenient for internal system integration</li>
+                <li class="list-group-item"><span class="material-icons text-success">check_circle</span> Stable front-end and back-end bridge data communication</li>
+            </ul>
+
+            <!-- Usage 折叠 -->
+            <div class="card mb-4">
+                <div class="card-header icon-title" data-bs-toggle="collapse" data-bs-target="#usageCollapse">
+                    <span class="material-icons">menu_book</span> Usage Guide (Click to expand)
+                </div>
+                <div id="usageCollapse" class="card-body collapse">
+                    <ol>
+                        <li>Administrators configure commonly used webpage URLs in the background for embedded access</li>
+                        <li>Open the mind map or whiteboard editing interface through document form buttons</li>
+                        <li>Edit mind map nodes or whiteboard graphics freely</li>
+                        <li>The system automatically saves changes to the database, supporting persistent reuse</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Manifest 代码块 折叠 -->
+            <div class="card mb-4">
+                <div class="card-header icon-title" data-bs-toggle="collapse" data-bs-target="#manifestCollapse">
+                    <span class="material-icons">code</span> __manifest__.py Snippet (Click expand)
+                </div>
+                <div id="manifestCollapse" class="card-body collapse">
+<pre><code class="language-json">{
+    "name": "MindMap & Excalidraw",
+    "summary": "Embed web pages, mind maps and Excalidraw whiteboards in the Odoo backend, with data persisted in the Odoo database",
+    "description": """
+Provides embedding capability within the Odoo backend. Administrators maintain a URL list for users to quickly switch pages via dropdown menu, with page refresh support.
+Built-in mind map module: supports online mind map editing with persistent data storage.
+Built-in Excalidraw whiteboard module: embeds Excalidraw canvas. Canvas changes are automatically saved with a delay to the Odoo database.
+Mind maps and whiteboards can be opened in a dedicated editing view with one click through form buttons. Frontend and backend communicate via a bridge.
+""",
+    "version": "1.0",
+    "author": "Your Name",
+    "depends": ["web"],
+    "installable": True,
+    "auto_install": False
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-5">
+                <span class="material-icons">info</span> Static Preview Page. Double click this HTML file to open locally. Internet required for Bootstrap / Icon / Highlight assets.
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

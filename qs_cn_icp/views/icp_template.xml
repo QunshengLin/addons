@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="qs_cn_icp.login_layout" inherit_id="web.login_layout">
+        <xpath expr="//div[hasclass('container')]" position="after">
+            <div class="text-center py-3 small text-secondary z-100">
+                <!-- 只要任意一个备案号存在就展示，而不是必须两个同时存在 -->
+                <t t-if="icp_police_number or icp_display_name">
+                    <p class="mt-2 mb-0 d-flex flex-wrap justify-content-center align-items-center gap-2">
+                        <!-- ICP工信部备案 -->
+                        <t t-if="icp_display_name">
+                            <img src="/qs_cn_icp/static/description/icp.png" alt="ICP图标"
+                                 style="width: 20px; height: 20px; margin-right: 4px; vertical-align: middle;"/>
+                            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer"
+                               style="font-size:14px; color: var(--link-color, var(--bs-link-color));">
+                                <t t-out="icp_display_name"/>
+                            </a>
+                        </t>
+
+                        <!-- 分隔符，两个备案都存在才显示 -->
+                        <t t-if="icp_display_name and icp_police_number">
+                            <span>|</span>
+                        </t>
+
+                        <!-- 公安备案 -->
+                        <t t-if="icp_police_number">
+                            <a t-att-href="'https://beian.mps.gov.cn/#/query/webSearch?code=' + ''.join([c for c in icp_police_number if c.isdigit()])"
+                               rel="noreferrer" target="_blank"
+                               style="font-size:14px; color: var(--link-color, var(--bs-link-color));">
+                                <t t-out="icp_police_number"/>
+                            </a>
+                        </t>
+                    </p>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

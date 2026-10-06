@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images</title>
+</head>
+<body>
+<div class="container py-4">
+    <div class="rst-container rst">
+        <h1 class="rst-title">Image Cropper</h1>
+        <h1>PC</h1>
+        <div class="d-flex justify-content-center mt-2">
+            <img src="./banner.gif"
+                 class="w-100" alt=""/>
+        </div>
+        <h1>mobile phone</h1>
+        <div class="row justify-content-center mt-2 g-3">
+            <div class="col-md-3">
+                <img src="./1.jpg" class="w-100 rounded" alt=""/>
+            </div>
+            <div class="col-md-3">
+                <img src="./2.jpg" class="w-100 rounded" alt=""/>
+            </div>
+            <div class="col-md-3">
+                <img src="./3.jpg" class="w-100 rounded" alt=""/>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header collapse-toggle" data-bs-toggle="collapse" data-bs-target="#en-section"
+                 aria-expanded="true">
+                <span class="material-icons-round">expand_more</span> English Documentation
+            </div>
+            <div class="collapse show" id="en-section">
+                <div class="card-body">
+                    <p>Powerful OWL-based custom image field widget for <strong></strong>, built on.<br>
+                        Add image crop, rotate, flip and fullscreen preview to your binary / many2one image fields.</p>
+
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li>Built-in modal image editor powered
+                            <ul>
+                                <li>Image cropping, support free ratio and fixed aspect ratio</li>
+                                <li>Rotate 90° left/right, horizontal & vertical flip</li>
+                                <li>High quality canvas rendering to preserve image clarity</li>
+                            </ul>
+                        </li>
+                        <li>Full-screen image preview popup
+                            <ul>
+                                <li>Drag to pan image, double-click for zoom</li>
+                                <li>Rotate view, reset position, download original image</li>
+                                <li>Image print, browser native share function</li>
+                            </ul>
+                        </li>
+                        <li>Automatic image optimization
+                            <ul>
+                                <li>Optional auto convert uploaded images to WebP to save storage and bandwidth</li>
+                                <li>Auto generate multi-resolution attachments (1920 / 1024 / 512 / 256 / 128)</li>
+                                <li>Generate JPEG fallback copies for PDF report compatibility</li>
+                            </ul>
+                        </li>
+                        <li>Compatibility
+                            <ul>
+                                <li>Support standard binary image field</li>
+                                <li>Support many2one attachment image field</li>
+                                <li>Mobile responsive with touch support</li>
+                                <li>Fully compatible with</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2>Use Cases</h2>
+                    <p>Product photos, contact avatars, document photos, signature uploads, Studio custom image fields,
+                        and more.</p>
+
+                    <h2>Usage</h2>
+                    <ol>
+                        <li>Install the module.</li>
+                        <li>Preview image by clicking on the thumbnail.</li>
+                    </ol>
+
+                    <div class="note">
+                        <strong>Note:</strong> Enable "Convert to WebP" in field options for automatic image
+                        compression.<br>
+                        This widget works for both binary fields and many2one attachment image fields.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider-line"></div>
+
+        <div class="card mb-4">
+            <div class="card-header collapse-toggle" data-bs-toggle="collapse" data-bs-target="#cn-section"
+                 aria-expanded="true">
+                <span class="material-icons-round">expand_more</span> 中文文档
+            </div>
+            <div class="collapse show" id="cn-section">
+                <div class="card-body">
+                    <h2>图片裁剪组件 Image Cropper</h2>
+                    为二进制字段、many2one附件图片字段提供图片裁剪、旋转、翻转、全屏预览能力。
+                    <h3>核心功能</h3>
+                    <ul>
+                        <li>内置弹窗图片编辑器
+                            <ul>
+                                <li>图片裁剪，支持自由比例、自定义固定宽高比</li>
+                                <li>左右90度旋转、水平/垂直翻转</li>
+                                <li>高质量画布渲染，保留原图清晰度</li>
+                            </ul>
+                        </li>
+                        <li>全屏大图预览弹窗
+                            <ul>
+                                <li>鼠标拖拽平移图片，双击放大</li>
+                                <li>视图旋转、位置重置、原图下载</li>
+                                <li>图片打印、浏览器原生分享</li>
+                            </ul>
+                        </li>
+                        <li>图片自动优化处理
+                            <ul>
+                                <li>可选自动转WebP格式，节省存储空间与带宽</li>
+                                <li>自动生成多分辨率附件（1920 / 1024 / 512 / 256 / 128）</li>
+                                <li>生成JPEG备用副本，兼容PDF报表导出</li>
+                            </ul>
+                        </li>
+                        <li>兼容性
+                            <ul>
+                                <li>支持标准binary二进制图片字段</li>
+                                <li>支持many2one附件图片字段</li>
+                                <li>移动端适配，支持触屏操作</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>适用场景</h3>
+                    <p>产品图片、联系人头像、证件照片、签名上传、Studio自定义图片字段等场景。</p>
+
+                    <h3>使用方法</h3>
+                    <ol>
+                        <li>安装本模块</li>
+                        <li>在Studio或者XML视图中，图片字段添加属性 <code>widget="image_cropper"</code></li>
+                        <li>上传图片，点击编辑按钮打开裁剪弹窗</li>
+                        <li>点击缩略图即可唤起大图预览</li>
+                    </ol>
+                    <div class="note">
+                        <strong>注意：</strong> 在字段选项开启「Convert to WebP」，启用图片自动压缩转换。<br>
+                        该组件同时支持 binary 字段 和 many2one 附件图片字段。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pre class="language-xml"><code>&lt;odoo&gt;
+    &lt;data&gt;
+        &lt;record id="act_product_view_inherit" model="ir.ui.view"&gt;
+            &lt;field name="name"&gt;product.template.inherit&lt;/field&gt;
+            &lt;field name="model"&gt;product.template&lt;/field&gt;
+            &lt;field name="inherit_id" ref="product.product_template_only_form_view"/&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;xpath expr="/form[@name='Product Template']//field[@name='image_1920']" position="attributes"&gt;
+                    &lt;attribute name="widget"&gt;image_cropper&lt;/attribute&gt;
+                &lt;/xpath&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+    &lt;/data&gt;
+&lt;/odoo&gt;
+</code></pre>
+        <pre class="language-xml"><code>&lt;odoo&gt;
+    &lt;data&gt;
+        &lt;record id="act_report_view_inherit" model="ir.ui.view"&gt;
+            &lt;field name="name"&gt;product.template.inherit&lt;/field&gt;
+            &lt;field name="model"&gt;product.template&lt;/field&gt;
+            &lt;field name="inherit_id" ref="product.product_template_only_form_view"/&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;xpath expr="/form[@name='Product Template']//field[@name='image_1920']" position="attributes"&gt;
+                    &lt;attribute name="widget"&gt;image_cropper&lt;/attribute&gt;
+                    &lt;attribute name="options"&gt;{'preview_image': 'image_128', 'size': [120, 120], 'zoom': True,
+                        'img_class': 'border rounded h-100 object-fit-contain',
+                        'convert_to_webp': True, 'enable_fabric_edit': True}
+                    &lt;/attribute&gt;
+                &lt;/xpath&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+    &lt;/data&gt;
+&lt;/odoo&gt;
+</code></pre>
+        <div class="card mb-4">
+            <div class="card-header collapse-toggle" data-bs-toggle="collapse" data-bs-target="#code-manifest"
+                 aria-expanded="false">
+                <span class="material-icons-round"><code>&lt;field name="image_1920" widget="image_cropper"/&gt;
+</code></span>
+
+            </div>
+            <div class="collapse" id="code-manifest">
+                <div class="card-body">
+<pre class="language-python"><code>
+
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

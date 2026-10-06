@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="qs_image_cropper.ImageCropperDialog" owl="1">
+        <!-- 适配移动端：Dialog 大小自适应，小屏用 md -->
+<!--        <Dialog size="this.isMobile ? 'md' : 'xl'" title="this.title">-->
+        <Dialog size="this.isMobile ? 'lg' : 'xl'" title="this.title">
+            <!-- qs-oi-scope：切换 .oi 字体为 Material Symbols Rounded（见 image_cropper.scss） -->
+            <div class="row g-0 mx-1 qs-oi-scope">
+                <div class="col-12">
+                    <!-- 编辑工具栏：优化移动端布局 -->
+                    <div class="mt-2 border p-1 rounded bg-light">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-header bg-white border-bottom py-1">
+                                <!-- 横向操作按钮组：适配移动端换行 -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="d-flex flex-wrap gap-1 w-100">
+                                        <!-- 基础操作按钮组：移动端优先展示 -->
+                                        <div class="d-flex gap-1 flex-wrap">
+                                            <button class="btn btn-sm btn-outline-primary" t-on-click="this.rotateLeft"
+                                                    data-tooltip="Rotate Left" aria-label="Rotate Left">
+                                                <i class="oi oi-fw oi-flip-horizontal" data-icon="rotate_right"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" t-on-click="this.rotateRight"
+                                                    data-tooltip="Rotate Right" aria-label="Rotate Right">
+                                                <i class="oi oi-fw" data-icon="rotate_right"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary"
+                                                    t-on-click="this.flipHorizontal"
+                                                    data-tooltip="Flip Horizontally" aria-label="Flip Horizontally">
+                                                <i class="oi oi-fw" data-icon="swap_horiz"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary"
+                                                    t-on-click="this.flipVertical"
+                                                    data-tooltip="Flip Vertically" aria-label="Flip Vertically">
+                                                <i class="oi oi-fw" data-icon="swap_vert"/>
+                                            </button>
+
+                                            <!-- 裁剪核心操作 -->
+                                            <button class="btn btn-sm btn-outline-success"
+                                                    t-on-click="this.toggleCropMode"
+                                                    t-att-class="this.state.isCropping ? 'btn-success' : 'btn-outline-success'"
+                                                    data-tooltip="Crop Mode" aria-label="Crop Mode">
+                                                <i class="oi oi-fw"
+                                                   t-att-class="this.state.isCropping ? 'oi-filled' : ''"
+                                                   data-icon="crop"/>
+                                                <span t-if="!this.isMobile">
+                                                    <t t-out="this.cropModeLabel"/>
+                                                </span>
+                                                <i class="oi ms-1" data-icon="content_cut"/>
+                                            </button>
+
+                                            <!-- 仅裁剪模式显示 -->
+                                            <button class="btn btn-sm btn-outline-success" t-if="this.state.isCropping"
+                                                    t-on-click="this.applyCrop" data-tooltip="Apply Crop"
+                                                    aria-label="Apply Crop">
+                                                <i class="oi oi-fw oi-filled" data-icon="check"/>
+                                            </button>
+
+                                            <!-- 辅助操作 -->
+                                            <button class="btn btn-sm btn-outline-secondary"
+                                                    t-on-click="this.resetEditor"
+                                                    data-tooltip="Reset" aria-label="Reset">
+                                                <i class="oi oi-fw" data-icon="undo"/>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary"
+                                                    t-on-click="this.centerCropBox"
+                                                    t-if="this.state.isCropping" data-tooltip="Center Crop Box"
+                                                    aria-label="Center Crop Box">
+                                                <i class="oi oi-fw" data-icon="recenter"/>
+                                            </button>
+                                        </div>
+
+                                        <!-- 裁剪比例选择：移动端独立一行 -->
+                                        <div class="d-flex align-items-center gap-1 w-100 mt-1"
+                                             t-if="this.state.isCropping">
+                                            <label class="form-label-sm mb-0 text-muted">Ratio:</label>
+                                            <select class="form-select form-select-sm flex-grow-1"
+                                                    t-on-change="this.changeCropRatio">
+                                                <option value="free">Free</option>
+                                                <option value="1:1">1:1</option>
+                                                <option value="4:3">4:3</option>
+                                                <option value="16:9">16:9</option>
+                                                <option value="3:2">3:2</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- 保存/关闭按钮 -->
+                                        <div class="d-flex gap-1 ms-auto">
+                                            <button class="btn btn-sm btn-primary" t-on-click="this.saveImage">
+                                                <i class="oi oi-fw me-1" data-icon="save"/>
+                                                <span t-if="!this.isMobile">Save</span>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" t-on-click="this.props.close">
+                                                <i class="oi oi-fw me-1" data-icon="close"/>
+                                                <span t-if="!this.isMobile">Close</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <!-- 加载/错误提示：适配移动端 -->
+                            <div t-if="this.state.isLoading" class="mt-2 text-primary fs-sm">
+                                <i class="oi oi-spin me-1" data-icon="progress_activity"></i>Loading...
+                            </div>
+                            <div t-if="this.state.hasError" class="mt-2 text-danger fs-sm">
+                                <i class="oi oi-filled me-1" data-icon="warning"></i>
+                                <t t-out="this.state.errorMessage"/>
+                            </div>
+
+                            <!-- 图片容器：适配移动端 -->
+                            <div class="w-100 overflow-auto">
+                                <img t-ref="this.imageRef" class="w-100 h-auto"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Dialog>
+    </t>
+</templates>

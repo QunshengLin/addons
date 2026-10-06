@@ -1,0 +1,12 @@
+// qs_image_cropper：Google Material Symbols（Rounded）字体作用域 + OI 图标美化
+// Odoo 20 通过 CSS 变量 --icon-font-family 切换 .oi 的具体字体
+.qs-oi-scope {
+    .oi {
+        --icon-font-family: 'Material Symbols Rounded';
+    }
+
+    // 弹窗工具栏按钮：图标与文字对齐微调
+    .btn .oi {
+        vertical-align: -0.125em;
+    }
+}

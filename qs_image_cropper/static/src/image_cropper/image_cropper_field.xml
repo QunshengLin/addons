@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <!-- 继承原生 web.ImageField 模板（primary 模式）：
+         图片元素、尺寸属性（t-att-width/height、sizeStyle）、上传/删除按钮
+         全部复用原生实现，仅扩展编辑与预览按钮，保证显示尺寸与原生一致。 -->
+    <t t-name="qs_image_cropper.ImageCropperField" t-inherit="web.ImageField" t-inherit-mode="primary">
+        <!-- 根容器：附加 qs-oi-scope 作用域（Material Symbols Rounded 图标字体，见 image_cropper.scss） -->
+        <xpath expr="//div[hasclass('opacity-trigger-hover')]" position="attributes">
+            <attribute name="class" add="qs-oi-scope" separator=" "/>
+        </xpath>
+        <!-- 图片编辑按钮：插入在清除按钮之前 -->
+        <xpath expr="//button[hasclass('o_clear_file_button')]" position="before">
+            <button t-if="this.props.record.data[this.props.name] and this.state.isValid and this.props.enableFabricEdit"
+                    class="o_fabric_edit_button btn btn-secondary o_btn_circle"
+                    data-tooltip="Edit Image" aria-label="Edit Image"
+                    t-on-click="this.openImageEditor">
+                <i class="oi oi-fw" data-icon="brush"/>
+            </button>
+        </xpath>
+        <!-- 全屏预览按钮：独立于编辑模式，只读时也可用（锚定图片左上角） -->
+        <xpath expr="//img" position="before">
+            <div class="position-absolute"
+                 t-att-class="this.isMobile ? 'o_mobile_controls' : ''"
+                 t-att-style="this.sizeStyle">
+                <button t-if="this.props.record.data[this.props.name] and this.state.isValid"
+                        class="o_photoswipe_preview_button btn btn-secondary o_btn_circle"
+                        data-tooltip="Preview" aria-label="Preview"
+                        t-on-click="this.openCustomImagePreview"
+                        style="z-index: 10;">
+                    <i class="oi oi-fw" data-icon="zoom_in"/>
+                </button>
+            </div>
+        </xpath>
+    </t>
+</templates>

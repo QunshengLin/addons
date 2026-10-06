@@ -1,0 +1,196 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* qs_image_cropper
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: qs_image_cropper
+#: model:ir.module.module,description:qs_image_cropper.module_meta_information
+msgid ""
+"CropperJS-based image field widget:\n"
+" * Image cropping (free / fixed aspect ratio)\n"
+" * Rotate and flip\n"
+" * Image preview (zoom, drag, print, download, native share)\n"
+" * Optional WebP conversion and multi-size attachment generation\n"
+"  "
+msgstr ""
+"基于 CropperJS 的图片字段组件：\n"
+" * 图片裁剪（自由比例 / 固定比例）\n"
+" * 旋转、翻转\n"
+" * 图片预览（缩放、拖动、打印、下载、原生分享）\n"
+" * 可选 WebP 转换及多尺寸附件生成\n"
+"  "
+
+#. module: qs_image_cropper
+#: model:ir.module.module,summary:qs_image_cropper.module_meta_information
+msgid "Image field widget with crop, rotate, flip and preview support"
+msgstr "图片裁剪编辑字段组件（支持裁剪、旋转、翻转、预览）"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Apply Crop"
+msgstr "应用裁剪"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Center Crop Box"
+msgstr "裁剪框居中"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Close"
+msgstr "关闭"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Crop failed: "
+msgstr "裁剪失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Crop Mode"
+msgstr "裁剪模式"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "CropperJS library failed to load"
+msgstr "CropperJS 库加载失败"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_field.js
+msgid "Editing cancelled"
+msgstr "编辑已取消"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Editor failed to load: "
+msgstr "编辑器加载失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Editor initialization failed: "
+msgstr "编辑器初始化失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Exit Crop"
+msgstr "退出裁剪"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_field.js
+msgid "Failed to load the image editor: "
+msgstr "加载图片编辑器失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Failed to load the image editor library: "
+msgstr "加载图片编辑库失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Failed to load the image"
+msgstr "图片加载失败"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_field.js
+msgid "Failed to save the edited image: "
+msgstr "保存编辑后的图片失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Flip Horizontally"
+msgstr "水平翻转"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Flip Vertically"
+msgstr "垂直翻转"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_preview.js
+msgid "High-resolution image sharing"
+msgstr "高清图片分享"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_preview.js
+msgid "Image preview failed: "
+msgstr "图片预览失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Image element not found"
+msgstr "图片元素未找到"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_preview.js
+msgid "Image Sharing"
+msgstr "图片分享"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.xml
+msgid "Loading..."
+msgstr "加载中..."
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_field.js
+msgid "No image data available to edit"
+msgstr "没有可编辑的图片数据"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_preview.js
+msgid "Please right-click to save the image, then share it"
+msgstr "请右键保存图片后分享"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.xml
+msgid "Ratio:"
+msgstr "比例："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Reset failed: "
+msgstr "重置失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Reset"
+msgstr "重置"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.xml
+msgid "Save"
+msgstr "保存"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Save failed: "
+msgstr "保存失败："
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Resource loading timed out, please check your network"
+msgstr "资源加载超时，请检查网络"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Rotate Left"
+msgstr "向左旋转"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Rotate Right"
+msgstr "向右旋转"
+
+#. module: qs_image_cropper
+#: qs_image_cropper/static/src/image_cropper/image_cropper_dialog.js
+msgid "Unable to extract image data"
+msgstr "无法提取图片数据"
